@@ -31,6 +31,8 @@ Load `circuit_pleading.tex` verbatim. Fill:
 - Body: facts/record/rule/delta (non-conclusory).
 See `examples/circuit_example.tex`.
 
+**Subpoenas:** `\SubpoenaForm{...}` from `forms_library.tex` (exact COL_Subpoena.pdf replica).
+
 \SubpoenaForm{
   PLAINTIFF_NAME,
   DEFENDANT_NAME, 
