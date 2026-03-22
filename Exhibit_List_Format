@@ -1,0 +1,34 @@
+# Exhibit List Format (Sequential by Use)
+
+\section{APPENDIX: EXHIBIT LIST}
+
+\textbf{Note:} Exhibits listed in order of first reference in the body text.
+
+\begin{longtable}{|p{0.6in}|p{1.4in}|p{1in}|p{2.6in}|}
+\hline
+\textbf{Exhibit} & \textbf{Source Document} & \textbf{Date} & \textbf{Description / Relevance} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Exhibit} & \textbf{Source Document} & \textbf{Date} & \textbf{Description / Relevance} \\
+\hline
+\endhead
+Defendant's Exhibit A & Police Report.pdf (pp. 2-4) & 2026-01-15 & Arrest narrative referenced in Section I ¶¶ 10-14 \\
+Defendant's Exhibit B & Shelter Hearing Order.docx (p. 1) & 2026-01-16 & 48-hour hearing timing discussed in Argument II.A \\
+Defendant's Exhibit C & Proof of Service Affidavit.pdf & 2026-01-10 & Service defect alleged in Section III \\
+\hline
+\end{longtable}
+
+\vspace{0.5in}
+\textbf{Declaration:} I declare under penalty of perjury under the laws of the State of Oregon that the foregoing is true and correct. Executed on [DATE].
+
+/s/ [USER NAME]
+AshLe' Penn, In Propria Persona
+
+
+## Exhibit List (CRITICAL)
+- List exhibits **sequentially by first reference** in the document body (A=first cited, B=second cited, etc.).
+- Label as "Defendant's Exhibit A", "B", etc.
+- Include source file + pinpoint + date + relevance (why/how used).
+- Append verification declaration.
+- Use `exhibit_list_template.md` exactly.
