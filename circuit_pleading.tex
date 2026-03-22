@@ -1,0 +1,155 @@
+\documentclass[10pt,letterpaper,oneside]{extarticle}
+\flushbottom
+\usepackage{fontspec}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage[left=1in,right=1in,top=1.05in,bottom=1.05in]{geometry}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usetikzlibrary{calc}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{booktabs}
+\usepackage{footnote}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{ragged2e}
+
+\titleformat{\section}
+{\normalfont\fontsize{9}{10}\scshape\centering}{\thesection}{2em}{}
+\titleformat{\subsection}
+{\normalfont\fontsize{9}{10}\scshape\centering}{\thesubsection}{2em}{}
+\titlespacing*{\section}{2pt}{5pt}{3pt}
+\titlespacing*{\subsection}{2pt}{3pt}{2pt}
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+% ============================================================
+% PLEADING LINE NUMBERS
+% ============================================================
+\newlength{\PleadingStep}
+\setlength{\PleadingStep}{\dimexpr\textheight/28}
+\makeatletter
+\AtBeginDocument{\setlength{\baselineskip}{\PleadingStep}}
+\makeatother
+\newcommand{\PleadingTopInset}{5.5pt}
+\newcommand{\PleadingNumsX}{0.95in}
+\newcommand{\PleadingRuleXA}{0.95in}
+\newcommand{\PleadingRuleXB}{0.975in}
+\newcommand{\PleadingRuleWidth}{0.75pt}
+\AddToHook{shipout/background}{%
+	\begin{tikzpicture}[remember picture,overlay]
+		\foreach \i in {1,...,28}{
+			\pgfmathsetmacro{\k}{\i-1}
+			\pgfmathsetlengthmacro{\yshift}{1in+\PleadingTopInset+(\k+0.5)*\PleadingStep}
+			\node[anchor=east,font=\fontsize{10pt}{10pt}\selectfont] at
+			([xshift=\PleadingNumsX,yshift=-\yshift]current page.north west){\i};
+		}
+		\pgfmathsetlengthmacro{\yTop}{1in+\PleadingTopInset}
+		\pgfmathsetlengthmacro{\yBot}{1in+\PleadingTopInset+\textheight}
+		\draw[line width=\PleadingRuleWidth]
+		([xshift=\PleadingRuleXA,yshift=-\yTop]current page.north west)--
+		([xshift=\PleadingRuleXA,yshift=-\yBot]current page.north west);
+		\draw[line width=\PleadingRuleWidth]
+		([xshift=\PleadingRuleXB,yshift=-\yTop]current page.north west)--
+		([xshift=\PleadingRuleXB,yshift=-\yBot]current page.north west);
+	\end{tikzpicture}%
+}
+
+% ============================================================
+% HEADER / FOOTER
+% ============================================================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{%%DEFENDANT'S AMENDED ANSWER; AFFIRMATIVE DEFENSES;
+			RENEWED MOTION TO DISMISS%%}} --- Pg.~\thepage}
+\setlength{\headheight}{13.6pt}
+
+% ============================================================
+% FORMATTING
+% ============================================================
+\setlength{\parindent}{0.5in}
+\setlength{\parskip}{.05pt}
+\hyphenpenalty=5000
+\tolerance=1000
+\emergencystretch=3em
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\newcommand{\CenteredUnderlined}[1]{%
+	\begin{center}\underline{\textbf{#1}}\end{center}}
+\newcommand{\HRule}{\noindent\rule{\linewidth}{0.5pt}}
+\newcommand{\CB}{\Square\;}
+\newcommand{\CaptionBlock}[3]{%
+	\noindent
+	\begin{minipage}[t]{3.2in}
+		\vspace{12pt}%
+		\begin{tikzpicture}
+			\node[inner sep=0pt,text width=3.2in,anchor=north west](T){#3};
+			\draw[line width=0.5pt](T.south west)--(T.south east);
+			\draw[line width=0.5pt](T.south east)--(T.north east);
+		\end{tikzpicture}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}[t]{3.0in}
+		\vspace{2pt}%
+		\RaggedRight Case No.: #1\\[10pt]
+		\raggedleft\small\textbf{#2}
+	\end{minipage}%
+}
+
+% ===========================================================
+\begin{document}
+% ============================================================
+% DOCUMENT 1 OF 4 — AMENDED ANSWER
+% ============================================================
+\begin{center}
+	{\normalsize\textbf{IN THE CIRCUIT COURT OF THE STATE OF OREGON}}\\
+		{\normalsize\textbf{FOR THE COUNTY OF WASHINGTON}}\\
+\end{center}
+\CaptionBlock{\textbf{%%26LT03815%%}}{%
+	\begin{center}
+		\fontsize{9}{9}\selectfont
+		\textbf{%%DEFENDANT'S AMENDED ANSWER%%;\\
+			%%AFFIRMATIVE DEFENSES; AND%%\\
+			%%RENEWED MOTION TO DISMISS FOR%%\\
+			%%LACK OF SUBJECT MATTER JURISDICTION%%\\
+			%%AND LACK OF STANDING%%}%
+	\end{center}
+}{%
+	%%JIM WONG%%,\\[4pt]
+	\hspace{0.3in}Plaintiff,\\[8pt]
+	vs.\\[8pt]
+	%%ASHLE' PENN%%,\\[8pt]
+	\hspace{0.3in}Defendant, \textit{In Propria Persona}.%
+}
+
+
+
+%% MARKERS FOR CLAUDE TO FILL %%
+%% Replace %% CASE_NUMBER %% with actual (e.g., 26LT03815) %%
+%% Replace %% PLAINTIFF %% / %% DEFENDANT %% %%
+%% Replace %% PLEADING_TITLE %% %%
+%% BODY TEXT GOES AFTER THE CAPTION BLOCK %%
+
+%% EXAMPLE BODY START %%
+\section{I. INTRODUCTION}
+[Skill fills neutral facts here]
+
+%% EXHIBIT LIST %%
+\section{EXHIBIT LIST}
+[From exhibit_list_template.md]
+%% EXAMPLE BODY END %%
