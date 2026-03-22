@@ -1,0 +1,1907 @@
+%% SAMPLE OUTPUT - DO NOT COPY INTO FINAL %%
+%% Full LaTeX with filled preamble, short body, exhibit list %%
+\documentclass[10pt,letterpaper,oneside]{extarticle}
+\flushbottom
+\usepackage{fontspec}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage[left=1in,right=1in,top=1.05in,bottom=1.05in]{geometry}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usetikzlibrary{calc}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{booktabs}
+\usepackage{footnote}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{ragged2e}
+
+\titleformat{\section}
+{\normalfont\fontsize{9}{10}\scshape\centering}{\thesection}{2em}{}
+\titleformat{\subsection}
+{\normalfont\fontsize{9}{10}\scshape\centering}{\thesubsection}{2em}{}
+\titlespacing*{\section}{2pt}{5pt}{3pt}
+\titlespacing*{\subsection}{2pt}{3pt}{2pt}
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+% ============================================================
+% PLEADING LINE NUMBERS
+% ============================================================
+\newlength{\PleadingStep}
+\setlength{\PleadingStep}{\dimexpr\textheight/28}
+\makeatletter
+\AtBeginDocument{\setlength{\baselineskip}{\PleadingStep}}
+\makeatother
+\newcommand{\PleadingTopInset}{5.5pt}
+\newcommand{\PleadingNumsX}{0.95in}
+\newcommand{\PleadingRuleXA}{0.95in}
+\newcommand{\PleadingRuleXB}{0.975in}
+\newcommand{\PleadingRuleWidth}{0.75pt}
+\AddToHook{shipout/background}{%
+	\begin{tikzpicture}[remember picture,overlay]
+		\foreach \i in {1,...,28}{
+			\pgfmathsetmacro{\k}{\i-1}
+			\pgfmathsetlengthmacro{\yshift}{1in+\PleadingTopInset+(\k+0.5)*\PleadingStep}
+			\node[anchor=east,font=\fontsize{10pt}{10pt}\selectfont] at
+			([xshift=\PleadingNumsX,yshift=-\yshift]current page.north west){\i};
+		}
+		\pgfmathsetlengthmacro{\yTop}{1in+\PleadingTopInset}
+		\pgfmathsetlengthmacro{\yBot}{1in+\PleadingTopInset+\textheight}
+		\draw[line width=\PleadingRuleWidth]
+		([xshift=\PleadingRuleXA,yshift=-\yTop]current page.north west)--
+		([xshift=\PleadingRuleXA,yshift=-\yBot]current page.north west);
+		\draw[line width=\PleadingRuleWidth]
+		([xshift=\PleadingRuleXB,yshift=-\yTop]current page.north west)--
+		([xshift=\PleadingRuleXB,yshift=-\yBot]current page.north west);
+	\end{tikzpicture}%
+}
+
+% ============================================================
+% HEADER / FOOTER
+% ============================================================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S AMENDED ANSWER; AFFIRMATIVE DEFENSES;
+			RENEWED MOTION TO DISMISS}} --- Pg.~\thepage}
+\setlength{\headheight}{13.6pt}
+
+% ============================================================
+% FORMATTING
+% ============================================================
+\setlength{\parindent}{0.5in}
+\setlength{\parskip}{.05pt}
+\hyphenpenalty=5000
+\tolerance=1000
+\emergencystretch=3em
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\newcommand{\CenteredUnderlined}[1]{%
+	\begin{center}\underline{\textbf{#1}}\end{center}}
+\newcommand{\HRule}{\noindent\rule{\linewidth}{0.5pt}}
+\newcommand{\CB}{\Square\;}
+\newcommand{\CaptionBlock}[3]{%
+	\noindent
+	\begin{minipage}[t]{3.2in}
+		\vspace{12pt}%
+		\begin{tikzpicture}
+			\node[inner sep=0pt,text width=3.2in,anchor=north west](T){#3};
+			\draw[line width=0.5pt](T.south west)--(T.south east);
+			\draw[line width=0.5pt](T.south east)--(T.north east);
+		\end{tikzpicture}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}[t]{3.0in}
+		\vspace{2pt}%
+		\RaggedRight Case No.: #1\\[10pt]
+		\raggedleft\small\textbf{#2}
+	\end{minipage}%
+}
+
+% ===========================================================
+\begin{document}
+% ============================================================
+% DOCUMENT 1 OF 4 — AMENDED ANSWER
+% ============================================================
+\begin{center}
+	{\normalsize\textbf{IN THE CIRCUIT COURT OF THE STATE OF OREGON}}\\
+		{\normalsize\textbf{FOR THE COUNTY OF WASHINGTON}}\\
+\end{center}
+\CaptionBlock{\textbf{26LT03815}}{%
+	\begin{center}
+		\fontsize{9}{9}\selectfont
+		\textbf{DEFENDANT'S AMENDED ANSWER;\\
+			AFFIRMATIVE DEFENSES; AND\\
+			RENEWED MOTION TO DISMISS FOR\\
+			LACK OF SUBJECT MATTER JURISDICTION\\
+			AND LACK OF STANDING}%
+	\end{center}
+}{%
+	JIM WONG,\\[4pt]
+	\hspace{0.3in}Plaintiff,\\[8pt]
+	vs.\\[8pt]
+	ASHLE' PENN,\\[8pt]
+	\hspace{0.3in}Defendant, \textit{In Propria Persona}.%
+}
+
+\begin{center}
+	\fontsize{9}{9}\selectfont
+	\textbf{SPECIAL APPEARANCE ---
+		DEFENDANT DOES NOT WAIVE JURISDICTIONAL DEFENSES}\\[2pt]
+	\textbf{ORCP 21 A(1)(a), (b), (d), (e), (f), (g);
+		ORCP 21 G(1), G(2), G(4)}\\[3pt]
+	\textbf{AMENDMENT AS OF RIGHT PURSUANT TO ORCP 23~A}\\[3pt]
+	\textit{No responsive pleading has been served by Plaintiff.
+		Defendant amends as of right. This Amended Answer
+		supersedes and replaces the original Answer filed
+		March~2, 2026, and is construed to have been filed
+		on that date. ORCP 23~A; ORCP 25.}
+\end{center}
+\indent COMES NOW Defendant Ashle' Penn (Defendant''),
+appearing specially and without waiving any jurisdictional
+objection previously raised or preserved, and for her Amended
+Answer states as follows.
+% ============================================================
+\section{\textbf{PRELIMINARY MATTERS}}
+% ============================================================
+\textbf{Amendment as of Right.}
+No responsive pleading has been served by Plaintiff. This
+Amended Answer is filed as of right under ORCP 23~A. It
+supersedes and replaces the original Answer filed March~2,
+2026, and relates back to that date for all purposes.
+\footnote{ORCP 23~A}; \footnote{ORCP 25}. This filing does not constitute a general
+appearance and does not waive any jurisdictional defense
+previously raised.\\
+\textbf{Filing Under Compulsion.}
+This Amended Answer is filed solely under compulsion of an
+oral deadline imposed during the March~2, 2026 telephonic
+hearing. That deadline is objected to on three independent
+grounds. \textit{First}, under UTCR~21.080(2), the deadline
+for electronically filed documents is 11:59:59~p.m.; an oral
+instruction cannot supersede a statewide rule.
+\textit{Second}, the deadline was imposed after Plaintiff had
+dropped from the call --- the case had been called, Plaintiff
+was no longer present, and all substantive action was taken
+with only Defendant on the line, in violation of the
+prohibition on ex parte proceedings. \textit{Third},
+Plaintiff communicated the trial date to Defendant by text
+message at 10:19~a.m.\ --- 27 minutes before the court
+called Defendant at 10:46~a.m.\ --- stating: "I spoke with
+the court regarding your motion to file documents, and the
+court has scheduled a trial date for June 5, 2026.''
+\footnote{\textit{See} Exhibit~M}. This sequence establishes that
+Plaintiff had ex parte contact with the court concerning
+Defendant's pending motion before Defendant was contacted,
+and that the trial date was set as a result of that
+communication. Oregon Code of Judicial Conduct Rule~2.9(A)
+prohibits a judge from initiating, permitting, or considering
+ex parte communications concerning a pending matter. This
+filing does not constitute, and shall not be construed as,
+a waiver of any jurisdictional defense previously raised,
+including those in Defendant's Motions to Dismiss filed
+March~2 and March~5, 2026, each incorporated herein by
+reference. \footnote{ORCP 21~G(1), G(4)}.
+\textbf{Fee Objection.}
+Under ORS~\S105.130(3), the \$88 fee applies only upon a
+demand for trial. This filing is not a trial demand. Any fee
+assessed is paid under protest and without waiver.
+\textbf{Trial Date Objection.}
+When this case was called on March~2, 2026, Plaintiff was not
+present on the line. The court itself confirmed: We lost
+the plaintiff.'' ORS~\S105.137(3) mandates that the court
+\textit{shall} dismiss the action or enter judgment for the
+defendant upon the plaintiff's failure to appear. That
+provision is non-discretionary. Defendant's presence was
+special and limited to jurisdictional objections only and
+does not constitute a general appearance. The court was not
+authorized to set a trial date over a pending, unresolved
+jurisdictional motion\footnote{ORCP~21~G(4)}; \footnote{ORS~\S105.130(4)}.
+The docket reflects the trial date order as entered by
+Judge Meisner on March~2, 2026; the trial is assigned to
+Judge Knaupp on June~5, 2026. Defendant's Motion to Dismiss
+has not been ruled upon and remains pending before this
+Court.
+\textbf{HAP Payments --- Plaintiff's Admission.}
+Plaintiff's own written communications confirm that he
+received HAP payments from WCHA throughout the tenancy.
+\textit{See} Exhibit~C. Those payments are recorded as
+\$0.00 received in every row of Plaintiff's ledger.
+\textit{See} Exhibit~B. The discrepancy between payments
+admitted and payments credited is not a bookkeeping error;
+it is the mechanism by which the manufactured arrearage was
+constructed.
+% ============================================================
+\section{\textbf{PRESERVATION OF JURISDICTIONAL DEFENSES}}
+% ============================================================
+Pursuant to ORCP 21~A(1) and ORCP 21~G, Defendant expressly
+preserves:
+\begin{enumerate}[label=(\textbf{\alph*)},leftmargin=.5in,nosep]
+	\item Lack of subject matter jurisdiction ---
+	ORCP 21~A(1)(a); ORCP 21~G(4) (non-waivable; must be
+	raised at any time);
+	\item Lack of jurisdiction over the person ---
+	ORCP 21~A(1)(b); ORCP 21~G(1);
+	\item Insufficiency of summons and service of process ---
+	ORCP 21~A(1)(e); ORCP 21~G(1);
+	\item Plaintiff lacks legal capacity and is not the real
+	party in interest --- ORCP 21~A(1)(d), (f);
+	ORCP 21~G(2);
+	\item Failure to state a claim upon which relief can be
+	granted --- ORCP 21~A(1)(g); and
+	\item Failure to join an indispensable party ---
+	ORCP 21~A(1)(g); ORCP 26~A.
+\end{enumerate}
+\indent No defense is waived by joinder with other defenses.
+ORCP 21~A(2)(a).
+% ============================================================
+\section{\textbf{RENEWED MOTION TO DISMISS}}
+% ============================================================
+\subsection{\textbf{Defective Notice --- No Subject Matter
+		Jurisdiction
+		(ORS~\S90.394(3); \textit{Hickey v.\ Scott},
+		370 Or 97 (2022))}}
+The notice of termination states \$5,918.00 as the amount
+of rent owed. That figure is derived from a ledger that
+embeds \$2,220.00 in HOA fines and \$1,045.00 in late fees
+--- neither of which constitutes rent'' under
+ORS~\S90.100(38) --- and applies the \$4,494.00 HRSN
+payment to November 2025 only, in violation of the mandatory
+chronological application order of ORS~\S90.220(9). The
+ledger also includes charges for November 2025 through
+January 2026, three months in which Defendant's recertified
+tenant portion was \$0.00. \textit{See} Exhibits~B and~G.\\
+\indent \textbf{Late fees are independently prohibited from
+	appearing in a termination notice.} ORS~\S90.260(4)
+provides that a landlord may not include a late charge in a
+notice of termination for nonpayment of rent. \indent Plaintiff's own ledger, read against the statutes
+governing what may lawfully appear in a termination notice,
+yields a maximum cognizable balance of \$1,345.00---and
+that figure assumes, without conceding, that every
+remaining charge is valid.
+
+\begin{center}
+	\small
+	\begin{tabular}{@{}p{4.2in}rp{1.3in}@{}}
+		\toprule
+		\textbf{Category} & \textbf{Amount} &
+		\textbf{Authority} \\
+		\midrule
+		Tenant-portion rent, Feb.~2025--Oct.~2025
+		(\$607 $+$ (8 $\times$ \$654))
+		--- HAP payments recorded as \$0.00
+		received despite Plaintiff's admission
+		of receipt
+		& \$5,839.00 & Exhibit B \\[4pt]
+		\textit{Less:} HRSN \$4,494.00 applied
+		chronologically from Feb.~2025;
+		exhausts mid-Aug.~2025
+		(\$617 of \$654; \$37 remainder unpaid)
+		& (\$4,494.00) & ORS \S90.220(9) \\[4pt]
+		\midrule
+		\textbf{Maximum cognizable balance per
+			Plaintiff's ledger, prohibited charges
+			excluded} (\$37 $+$ \$654 $+$ \$654)
+		& \textbf{\$1,345.00} & \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+\indent Plaintiff did not notice \$1,345.00. Plaintiff
+noticed \$5,918.00---an overstatement of \$4,573.00.
+That overstatement is not rounding error or bookkeeping
+imprecision. It is the product of four categories of
+charges the Legislature has expressly prohibited from
+inclusion in a termination notice. Each is itemized below.
+
+\begin{center}
+	\small
+	\begin{tabular}{@{}p{3.8in}rp{1.5in}@{}}
+		\toprule
+		\textbf{Prohibited Charge} & \textbf{Amount} &
+		\textbf{Authority} \\
+		\midrule
+		HOA fines/assessments (8 months,
+		Jul.~2024--Apr.~2025) --- not rent under
+		ORS~\S90.100(41)(a); pass-through
+		prohibited under ORS~\S90.302(1)
+		& \$2,220.00 &
+		ORS \S\S90.100(41)(a), 90.302(1) \\[4pt]
+		Late fees (\$95 $\times$ 11 months) ---
+		prohibited in termination notice
+		& \$1,045.00 & ORS \S90.260(4) \\[4pt]
+		Nov.~2025--Jan.~2026 charges at \$0.00
+		tenant portion post-recertification
+		(3 $\times$ \$654)
+		& \$1,962.00 & Exhibits G, H \\[4pt]
+		HRSN \$4,494.00 misapplied to
+		Nov.~2025 only instead of
+		chronologically from Feb.~2025
+		& \$4,494.00 & ORS \S90.220(9) \\[4pt]
+		\midrule
+		\textbf{Total overstatement}
+		& \textbf{\$4,573.00} & \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+\indent To the extent the Court reaches the question of
+rent owed notwithstanding the void notice---which Defendant
+contests---the corrected balance derived from Plaintiff's
+own ledger is \textbf{\$1,345.00}. To the extent the Court
+reaches that corrected balance, it is fully offset and
+negated by Defendant's affirmative defenses and
+counterclaims, which independently entitle Defendant to a
+net judgment in her favor. \footnote{\textit{See} Counterclaims,
+	\textit{infra}.}\\
+\indent The notice overstates the amount owed by \$4,573.00
+--- approximately 77\% --- and is void under
+\textit{Hickey}. This Court lacks subject matter
+jurisdiction as a result. Plaintiff's January~21, 2026 email transmitting the ledger states: the HOA kindly agreed to temporarily
+	suspend additional fine HOA account.'' \textit{See}
+	Exhibit~C. This is a direct admission that HOA fine
+	pass-throughs were within Plaintiff's discretion and
+	control, not mandatory charges, and that Plaintiff
+	knew they were not rent at the time he included them
+	in the noticed balance.}
+\subsection{\textbf{Wrong Plaintiff; Failure to State a
+		Claim; Indispensable Party Not Joined
+		(ORCP 21~A(1)(d), (f), (g); ORS~\S105.130(4);
+		ORS~\S63.165; ORCP 26~A)}}
+The lease identifies the lessor as \textbf{JWP WONG REAL
+	ESTATE}, an Oregon limited liability company.
+\textit{See} Exhibit~D. HAP payments from WCHA and the
+\$4,494.00 HRSN benefit were each paid directly to JWP WONG
+REAL ESTATE --- not to Jim Wong individually.
+\textit{See} Exhibit~G. Jim Wong individually is not the
+real party in interest and lacks legal capacity to maintain
+this action. ORS~\S63.165 precludes an LLC member from
+asserting the LLC's legal rights in his own name absent
+express authorization. Jim Wong has produced no operating
+agreement, board resolution, or agency authorization. The
+LLC is an indispensable party not joined. ORCP 26~A;
+ORCP 21~A(1)(g).\\
+\indent \textbf{Failure to state a claim arises on two
+	independent grounds.} \textit{First}, a plaintiff who is
+not the real party in interest has no cognizable legal right
+to possession and therefore cannot state a claim for
+restitution of the premises. ORS~\S105.130(4) requires that
+the action be brought by the landlord'' --- the party with
+whom the tenant has a rental agreement, which is JWP WONG
+REAL ESTATE. \textit{Second}, a complaint premised on a
+termination notice that is void under ORS~\S90.394(3) and
+\textit{Hickey} cannot state a cognizable claim for
+possession; the void notice is the jurisdictional predicate
+for the entire action, and without it there is no claim.
+ORCP 21~A(1)(g).
+\indent Defendant requests dismissal without prejudice as
+to the real-party defect, or substitution of JWP WONG REAL
+ESTATE with proof of agency authority before further
+proceedings. The real-party defect runs against Plaintiff's
+claim only and is not available to Plaintiff as a shield
+against Defendant's compulsory counterclaims.
+ORS~\S90.370(1)(a); ORCP 22~A.
+\subsection{\textbf{Additional Grounds for Dismissal}}
+\textbf{Defective Service.}
+Service did not comply with ORCP~7 and ORS~\S105.135,
+depriving this Court of personal jurisdiction over
+Defendant. ORCP 21~A(1)(e); ORCP 21~G(1). This objection
+was raised on the record March~2, 2026 and is preserved.\\
+\textbf{Failure to Cooperate with Rental Assistance.}
+ORS~\S90.395 independently requires dismissal where the
+landlord failed to cooperate with the tenant's rental
+assistance program. Plaintiff accepted both the HRSN
+payment and monthly HAP payments from WCHA, then
+misapplied those funds to unlawful charges in violation of
+ORS~\S90.220(9)'s mandatory payment application order, and
+filed this action claiming a balance that does not reflect
+payments received. Accepting rental assistance and
+misapplying it to manufactured charges is not cooperation
+within the meaning of ORS~\S90.395. Plaintiff's conduct
+also constitutes a breach of the HAP contract between JWP
+WONG REAL ESTATE and WCHA under 24~CFR~\S982.451, and may
+independently constitute an owner breach of contract under
+24~CFR~\S982.453. Defendant will provide notice to WCHA of
+these violations.\\
+\textbf{Plaintiff's Non-Appearance; ORS~\S105.137(2).}
+When this case was called on March~2, 2026, Plaintiff was
+not present on the line. The court confirmed: "We lost the
+Plaintiff.'' The court then proceeded to take substantive
+action --- setting a trial date, imposing an answer
+deadline, and overruling Defendant's jurisdictional
+objection --- with only Defendant on the line.
+ORS~\S105.137(2) is mandatory: upon Plaintiff's failure to
+appear, the court \textit{shall} dismiss or enter judgment
+for Defendant. The court's failure to apply
+ORS~\S105.137(2) is preserved error. Plaintiff's 10:22~a.m.\
+text message --- sent 27 minutes before the court called
+Defendant --- confirms that Plaintiff had ex parte contact
+with the court regarding Defendant's pending motion before
+Defendant was reached. \textit{See} Exhibit~M. Defendant's
+objection to the trial date was stated on the record,
+overruled, and is preserved for appellate review. No trial
+date should have been set while Defendant's jurisdictional
+motion remained pending and unresolved and after Plaintiff was not present during the hearing. ORCP~21~G(4).
+% ============================================================
+\section{\textbf{ANSWER AND DENIAL OF ALLEGATIONS}}
+% ============================================================
+Without waiving any jurisdictional defense, Defendant
+responds to Plaintiff's Complaint as follows:
+\begin{enumerate}[label=\arabic*.,leftmargin=.5in,nosep]
+	\item Defendant \textbf{Denies} that Plaintiff Jim Wong
+	individually is entitled to possession of 17548 NW
+	Springville Rd \#9, Portland, OR 97229.
+	\item Defendant \textbf{Denies} that the landlord of
+	record is Jim Wong. The landlord of record is JWP WONG
+	REAL ESTATE, LLC.
+	\item Defendant \textbf{Denies} that she owes the
+	amount stated in the notice of termination or Complaint.
+	\item Defendant \textbf{Denies} that the notice of
+	termination was valid, legally sufficient, or properly
+	served.
+	\item Defendant \textbf{Denies} each remaining
+	allegation not specifically admitted herein.
+	\item Defendant \textbf{Admits} that Plaintiff Jim Wong
+	is the titled owner of the unit.
+\end{enumerate}
+% ============================================================
+\section{\textbf{AFFIRMATIVE DEFENSES}}
+% ============================================================
+\indent This Answer is filed under court compulsion. This
+court-compelled filing does not constitute a voluntary
+general appearance. The Court is obligated to resolve the
+jurisdictional, standing and capacity questions first. All affirmative defenses and
+counterclaims are preserved for any subsequent proceeding
+in which jurisdiction is properly established.
+\subsection{\textbf{First Affirmative Defense ---
+		Defective Notice
+		(ORS~\S90.394(3); \textit{Hickey v.\ Scott},
+		370 Or 97 (2022))}}
+The notice overstates the amount of rent owed by \$4,573.00.
+With payments applied consistent with statutory requirements, any alleged balance would amount to \$1,345.00. Under
+\textit{Hickey v.\ Scott}, 370 Or 97 (2022), any
+overstatement of the amount of rent owed voids the notice
+and deprives this Court of subject matter jurisdiction.
+\textit{See} Section~III(A), \textit{supra}.
+\subsection{\textbf{Second Affirmative Defense ---
+		Misapplication of Payments; Unlawful Late Fees
+		(ORS~\S90.220(9); ORS~\S90.260(4);
+		ORS~\S90.395)}}
+Plaintiff received HAP payments from WCHA each month and
+the \$4,494.00 HRSN benefit, yet applied those funds to HOA
+fees and late charges ahead of rent, in violation of
+ORS~\S90.220(9)'s mandatory payment application order.
+\textit{See} Exhibits~B and~G. ORS~\S90.260(4) independently
+prohibits the inclusion of late charges in a termination
+notice for nonpayment of rent. The \$1,045.00 in late fees
+in Plaintiff's noticed balance violates ORS~\S90.260(4)
+regardless of whether the underlying late fee provision is
+otherwise valid. Correctly applied, the balance is
+\$1,345.00. Plaintiff's failure to cooperate with
+Defendant's rental assistance programs independently
+requires dismissal under ORS~\S90.395.
+\subsection{\textbf{Third Affirmative Defense ---
+		Zero Tenant Portion Following Recertification}}
+Defendant recertified her income with WCHA in November 2025,
+reporting zero income, reducing her tenant portion to
+\$0.00 for November 2025, December 2025, and January 2026.
+\textit{See} Exhibits~G and~H. Plaintiff's inclusion of
+\$1,962.00 for those three months independently overstates
+the noticed balance and voids the notice under
+\textit{Hickey}.
+\subsection{\textbf{Fourth Affirmative Defense ---
+		Failure to Maintain Habitable Premises
+		(ORS~\S90.320; ORS~\S90.360(2); ORS~\S90.370;
+		ORS~\S90.380)}}
+Plaintiff failed to maintain the premises in habitable
+condition as required by ORS~\S90.320. Defendant provided
+written notice of each of the following defects, each of
+which remained unresolved as of this filing:
+\begin{enumerate}[label=(\alph*),leftmargin=.5in,
+	itemsep=4pt]
+	\item \textbf{Drain fly infestation from plumbing
+		defect.} Reported November~16, 2023; unresolved as of
+	this filing --- approximately \textbf{28 months}.
+	ORS~\S90.320(1)(a)(b)(e)(f) (plumbing facilities in good working
+	order). \textit{See} Exhibit~C.
+	\item \textbf{Missing window screens.} Requested
+	July~2023; unresolved as of this filing ---
+	approximately \textbf{32 months}.
+	ORS~\S90.320(1)(a) (windows in good repair).
+	Plaintiff's 30-month failure to install window screens
+	directly caused the HOA window-covering noncompliance
+	notices that Plaintiff then forwarded to WCHA.
+	\textit{See} Exhibits~C, I--L.
+	\item \textbf{Leaking kitchen sink.} Reported
+	June~26, 2024; unresolved as of this filing ---
+	approximately \textbf{21 months}.
+	ORS~\S90.320(1)(c). \textit{See} Exhibit~C.
+	\item \textbf{Water intrusion into live electrical
+		outlet.} Reported June~26, 2024; unresolved as of this
+	filing --- approximately \textbf{21 months}.
+	ORS~\S90.320(1)(e) (electrical systems in good working
+	order). This defect constitutes an immediate and
+	ongoing safety hazard. \textit{See} Exhibit~C.
+	\item \textbf{Leaking master toilet; standing water;
+		mold.} Reported November~17, 2025; unresolved as of
+	this filing --- approximately \textbf{4 months}.
+	ORS~\S90.320(1)(b) (plumbing; elimination of
+	moisture and mold) (f). \textit{See} Exhibit~C.
+	\item \textbf{Non-functioning stove burner; inadequate
+		hot water.} Reported November~2025--January~2026;
+	unresolved as of this filing --- approximately
+	\textbf{4 months}. ORS~\S90.320(c)(A) (heating and
+	cooking facilities in good working order).
+	\textit{See} Exhibit~C.
+	\item \textbf{Intermittent power outages;
+		non-functioning outlets.} Reported January~6, 2026;
+	unresolved as of this filing --- approximately
+	\textbf{2 months}. ORS~\S90.320(1)(e).
+	\textit{See} Exhibit~C.
+	\item \textbf{Failure to provide replacement mail key.}
+	Three written requests; unresolved as of this filing.
+	ORS~\S90.320(1) (premises fit for human occupation).
+	This failure deprived Defendant of legal, court, and
+	government correspondence throughout this proceeding.
+	\textit{See} Exhibit~C.
+\end{enumerate}
+\indent ORS~\S90.360(2) provides that where a landlord
+fails to remedy a habitability defect after written notice,
+the tenant may recover the diminution in rental value of
+the dwelling for the period of the defect. A conservative
+10\% diminution of \$2,535.00/month applied to the full
+32-month tenancy yields \$8,112.00 in rent abatement. The
+10\% figure is conservative; the court may find a higher
+percentage warranted given the number, duration, and
+severity of the defects, particularly the 28-month drain
+fly infestation and the live electrical hazard. Each item
+above was noticed in writing. \textit{See} Exhibit~C.\\
+\indent \textbf{Renting dwelling known to be unlawful to
+	occupy (ORS~\S90.380).} Plaintiff knew or reasonably should
+have known that the unit was unlawful to occupy given the
+water intrusion into a live electrical outlet (reported
+June~26, 2024; unresolved 21 months), the 28-month drain
+fly infestation originating from a plumbing defect, and the
+standing water and mold from the leaking master toilet.
+ORS~\S90.380 provides that where a landlord rents a
+dwelling that the landlord knows or reasonably should know
+is unlawful to occupy, the tenant may recover the greater
+of two months' periodic rent (\$5,070.00) or twice the
+actual damages sustained. The floor of this remedy is
+\$5,070.00; actual damages are to be proven at trial.\\
+\indent The causal chain is direct: Plaintiff created the
+conditions generating the HOA fines by failing to install
+window screens for 32 months, charged those fines to
+Defendant in violation of ORS~\S90.302(1), applied
+Defendant's payments to those unlawful charges first in
+violation of ORS~\S90.220(9), and then filed this eviction
+claiming unpaid rent. Each step is independently
+%% PICKS UP from: "Each step is independently"
+unlawful; together they are a manufactured arrearage.
+ORS~\S90.370; ORS~\S90.385.
+\subsection{\textbf{Fifth Affirmative Defense ---
+		Retaliation; Selective Enforcement; Discrimination
+		(ORS~\S90.385)}}
+This eviction follows Defendant's assertion of habitability
+rights and constitutes retaliation under ORS~\S90.385 on
+four independent bases:
+\textbf{(1) Selective HCV Disclosure.}
+In November 2025, Plaintiff selectively forwarded an HOA
+window-covering noncompliance notice to WCHA at
+hcvinterim@washingtoncountyor.gov --- a violation caused
+entirely by Plaintiff's own 32-month failure to install
+window screens --- while simultaneously concealing from
+WCHA eleven documented GHQS violations under
+24~CFR~\S982.401, any one of which would have required an
+HQS inspection and exposed Plaintiff to suspension of HAP
+payments. \textit{See} Exhibits~C, I--L. This selective,
+bad-faith disclosure was designed to threaten Defendant's
+Section~8 voucher while shielding Plaintiff from regulatory
+consequences.
+\textbf{(2) Selective Enforcement of HOA Rules --- Grill.}
+The rental agreement between Defendant and JWP WONG REAL
+ESTATE expressly permits Defendant to maintain an outdoor
+grill on the premises. \textit{See} Exhibit~D. The patio
+is Defendant's exclusive-use limited common element under
+CC\&R Sections~5.1 and~6.1. \textit{See} Exhibit~E.
+Plaintiff enforced an HOA demand that Defendant remove her
+grill --- in direct contradiction of a written lease term
+--- while other residents of the complex are permitted to
+maintain grills and outdoor equipment without comparable
+enforcement action. \textit{See} Exhibit~N. This selective
+enforcement, directed at Defendant and not at similarly
+situated residents, constitutes: (a)~breach of the rental
+agreement; (b)~retaliation under ORS~\S90.385;
+(c)~a violation of Defendant's quiet enjoyment rights under
+ORS~\S90.360(1); and (d)~a basis for lease termination
+without penalty under ORS~\S90.360(1). A landlord cannot
+simultaneously grant a contractual right in the lease and
+then enforce an HOA demand to extinguish it. Defendant
+reserves the right to assert a fair housing claim based on
+the pattern of selective enforcement if discovery reveals
+that enforcement has been directed disproportionately at
+protected-class tenants.
+\textbf{(3) Bad-Faith Lease Coercion.}
+Plaintiff engaged in bad-faith lease coercion in writing on
+or about January~25, 2025. \textit{See} Exhibit~C.
+\textbf{(4) Prior Defective FED Judgment;
+	Constructive Entrapment.}
+Plaintiff obtained a prior FED judgment in Washington County
+Circuit Court through service directed to a neighboring
+address at which Defendant has never resided. That judgment
+clouds Defendant's rental history, prevents her from
+securing alternative housing, and effectively traps her in
+this tenancy. Plaintiff has repeatedly refused to stipulate
+to vacatur despite Defendant's written requests ---
+deliberately maintaining a cloud he knows to be infirm ---
+while simultaneously filing this new action. A landlord who
+traps a tenant in a substandard unit by refusing to vacate
+a void judgment, and then files a second eviction for the
+same tenancy, does not come to this Court with clean hands.
+\subsection{\textbf{Sixth Affirmative Defense ---
+		Unlawful Vehicle Tow; Conversion
+		(ORS~\S90.325; ORS~\S90.365;
+		ORS~\S98.854(2); ORS~\S12.080)}}
+On or about March~6, 2024, Defendant's Dodge Journey was
+towed from the Courtyards at Springville by Sergeant's
+Towing at AMS direction. Plaintiff owed Defendant a
+non-delegable duty under ORS~\S90.325 to ensure that
+third-party enforcement actions directed at Defendant's
+tenancy --- including towing --- complied with her statutory
+and contractual rights. Plaintiff breached that duty in the
+following independently sufficient respects, each documented
+by Plaintiff's own written admissions
+(\textit{see} Exhibit~C):
+\textbf{Duty.} As the unit owner and landlord in privity
+with Defendant, Plaintiff bore a non-delegable duty of
+reasonable care under ORS~\S90.325 to supervise and control
+the conduct of AMS and any towing company acting at AMS
+direction with respect to Defendant's property.\\
+\textbf{Breach.}
+\begin{enumerate}[label=(\alph*),leftmargin=.5in,
+	itemsep=4pt]
+	\item \textbf{No parking pass.} From move-in in
+	July~2023, Defendant registered her vehicles with
+	Plaintiff in writing. Despite repeated requests over
+	more than eight months, Plaintiff never issued a
+	parking pass. Plaintiff's own March~11, 2024 email
+	requesting Defendant fill out a vehicle registration
+	form confirms no valid pass had been issued as of
+	the date of the tow. \textit{See} Exhibit~C.
+	\item \textbf{No valid tow authorization.} Under
+	ORS~\S98.854(2), a tower may not remove a vehicle
+	without signed authorization from the property owner
+	or owner's agent at the time of the tow. No
+	authorization from Plaintiff --- the party in privity
+	with Defendant --- was obtained.
+	\item \textbf{No pre-tow warning.} Plaintiff
+	acknowledged in writing on March~17--18, 2024 that a
+	warning was required before towing and that
+	Defendant's photographs showed her vehicle was not in
+	the fire lane. \textit{See} Exhibit~C.
+	\item \textbf{Shifting justifications.} The stated
+	basis for the tow shifted at least three times (fire
+	lane; blocking pedestrian access; failure to display
+	tags), none supported by the date- and
+	time-stamped photographs required by
+	ORS~\S98.853(2). \textit{See} Exhibit~N.
+	\item \textbf{Abdication.} Plaintiff told Defendant
+	in writing: "
+	there is nothing I could do,'' and
+	took no action to remedy the tow or recover the
+	vehicle. \textit{See} Exhibit~C (March~17, 2024).
+\end{enumerate}
+\textbf{Causation and Damages.} Plaintiff's breach of his
+non-delegable duty directly caused the loss of Defendant's
+Dodge Journey and all personal property contained therein,
+including an iPad, prescription eyeglasses, prescription
+medications, legal and financial paperwork, clothing, a
+child's car seat, jewelry, and work equipment. The
+outstanding payoff balance on the vehicle --- reported to
+Defendant's credit --- is \$14,039.88. \textit{See}
+Exhibit~P. The loss of the vehicle caused further
+consequential damages including credit impairment, loss of
+transportation, impaired employment mobility, and emotional
+distress, to be proven at trial.\\
+\textbf{Statute of Limitations.} This claim is governed by
+ORS~\S12.080, which provides a six-year limitations period
+for claims arising from the conversion of personal property.
+The tow occurred March~6, 2024; the limitations period
+expires March~6, 2030. This filing is timely.\\
+\textbf{Forthcoming Motion to Compel.} Defendant will file
+a Motion to Compel production of all towing authorization
+records, communications between Plaintiff and AMS or
+Sergeant's Towing, and any HOA enforcement records relating
+to the March~6, 2024 tow.
+\subsection{\textbf{Seventh Affirmative Defense ---
+		Unlawful Entry into Exclusive-Use Space;
+		Breach of Quiet Enjoyment;
+		Unlawful Fee Pass-Through
+		(ORS~\S90.322(1)(f), (8); ORS~\S90.360(1);
+		ORS~\S90.302(1), (3); ORS~\S90.325;
+		CC\&R \S\S5.1, 6.1)}}
+Plaintiff permitted, authorized, or failed to prevent the
+HOA and AMS from repeatedly entering Defendant's
+exclusive-use patio, backyard, and garage --- limited common
+elements for Defendant's exclusive use under CC\&R
+Sections~5.1 and~6.1 (\textit{see} Exhibit~E) --- without
+providing the 24-hour notice required by
+ORS~\S90.322(1)(f) and without Defendant's consent.
+Plaintiff's own July~30, 2025 text message confirms the
+mechanism: They will send compliance officer to check on
+whether they have been addressed and accumulate the fines
+each month.'' \textit{See} Exhibit~C. Plaintiff's ledger
+reflects eight discrete months of HOA fine assessments
+(July~2024--April~2025), each corresponding to a compliance
+inspection of Defendant's exclusive-use space without
+required notice, establishing a minimum of eight violations.
+\textit{See} Exhibit~B. A pre-ledger entry on
+September~25, 2023 establishes at least one additional
+violation.\\
+\indent \textbf{Breach of quiet enjoyment.} Each
+unauthorized entry into Defendant's exclusive-use patio,
+backyard, and garage independently constitutes a breach of
+Defendant's right to quiet enjoyment under
+ORS~\S90.360(1), entitling Defendant to terminate the
+rental agreement without penalty and to recover actual
+damages in addition to the statutory remedy under
+ORS~\S90.322(8). The CC\&Rs govern the relationship between
+unit owners and the HOA --- not the relationship between
+Plaintiff and Defendant. Defendant's rights are governed
+exclusively by the ORLTA. The HOA's authority to conduct
+compliance inspections of common areas does not extend to
+Defendant's exclusive-use limited common element without
+first complying with ORS~\S90.322(1)(f). Plaintiff, as unit
+owner and landlord, is responsible under ORS~\S90.325 for
+ensuring that HOA enforcement directed at Defendant's
+exclusive-use space complies with Defendant's statutory
+rights.\\
+\indent \textbf{Unlawful fee pass-through.}
+ORS~\S90.302(1) prohibits a landlord from charging,
+collecting, or attempting to collect any fee not authorized
+by statute or rental agreement. HOA assessments run against
+unit owners only under Bylaws Sections~5.3(a), 5.6, and~5.7
+(\textit{see} Exhibit~F); Plaintiff has no authority to
+pass them through to Defendant. Any lease clause purporting
+to authorize such pass-throughs is void under ORS~\S90.135
+as an attempted waiver of Defendant's ORLTA rights. Under
+ORS~\S90.302(3), a landlord who charges, collects, or
+attempts to collect a fee not authorized by statute or
+rental agreement is liable for two months' periodic rent
+(\$5,070.00) plus actual damages (\$2,220.00 confirmed on
+Plaintiff's own ledger) per claim. The demand itself is the
+statutory violation --- payment is not required to trigger
+the remedy.\\
+\indent \textbf{Statute of Limitations.} All HOA entry and
+fee claims are timely. ORS~\S12.125 provides a one-year
+limitations period for claims arising under ORS Chapter~90
+or a rental agreement. Entries and demands within one year
+of this filing are timely on their face. Entries and demands
+beyond one year are timely under the continuing tort
+doctrine: each unauthorized entry and each unlawful fee
+demand was a new and independent violation, and the claim
+accrued anew with each occurrence.\\
+\indent \textbf{Forthcoming Motion to Compel.} Defendant
+will file a Motion to Compel production of all HOA
+compliance inspection records, fining records, and
+communications between Plaintiff, AMS, and the HOA relating
+to Unit~9 from July~2023 to present.
+\subsection{\textbf{Eighth Affirmative Defense ---
+		Unclean Hands; Bad Faith;
+		Constructive Entrapment}}
+Plaintiff seeks equitable relief --- a writ of possession
+--- while having engaged in a sustained course of
+inequitable conduct that is the direct cause of the
+conditions he now complains of:
+\begin{enumerate}[label=(\arabic*),leftmargin=.5in,
+noitemsep]
+	\item Plaintiff obtained a prior FED judgment in
+	Washington County Circuit Court through service
+	directed to a neighboring address, producing a void
+	judgment that has clouded Defendant's rental history
+	and prevented her from securing alternative housing;
+	\item Plaintiff has repeatedly refused to stipulate to
+	vacatur of that void judgment, deliberately maintaining
+	a cloud he knows to be infirm;
+	\item Plaintiff filed the present action without
+	enforcing the prior judgment --- a functional
+	concession that the prior judgment cannot stand ---
+	while simultaneously refusing to vacate it, trapping
+	Defendant in this tenancy;
+	\item Plaintiff seeks possession of a unit he has
+	allowed to fall into uninhabitable condition for over
+	32 months while Defendant had no viable ability to
+	leave; and
+	\item Plaintiff created the very rent arrearage he
+	relies upon by permitting unlawful HOA entries,
+	passing through the resulting fines in violation of
+	ORS~\S90.302(1), and misapplying Defendant's payments
+	in violation of ORS~\S90.220(9).
+\end{enumerate}
+\vspace{-1em}
+\indent A party who manufactures the conditions making a
+tenant's continued occupancy unavoidable, and who then
+manufactures the arrearage through his own statutory
+violations, does not come to this Court with clean hands.
+\subsection{\textbf{Ninth Affirmative Defense ---
+		Waiver (ORS~\S90.412)}}
+To the extent Plaintiff accepted HAP or HRSN payments after
+the alleged default without providing written notice of
+reservation of rights, Plaintiff waived the right to
+terminate for that default. ORS~\S90.412(1). Plaintiff's
+own ledger confirms payment receipts throughout the period
+in question. \textit{See} Exhibit~B.
+% ============================================================
+\section{\textbf{DEMAND FOR TRIAL IN THE ALTERNATIVE}}
+% ============================================================
+Without waiving, and expressly preserving, all
+jurisdictional defenses set forth herein, Defendant demands
+trial on her counterclaims in the event this Court denies
+the Motion to Dismiss or otherwise retains jurisdiction
+over any portion of this action. This demand is made solely
+to preserve Defendant's right to adjudication of her
+compulsory counterclaims under ORS~\S90.370(1)(a) and
+ORCP 22~A, and shall not be construed as a general
+appearance, a waiver of any jurisdictional objection, or a
+concession that this Court has subject matter jurisdiction
+over Plaintiff's complaint. ORCP 21~G(1), G(4).
+% ============================================================
+\section{\textbf{COUNTERCLAIMS}}
+% ============================================================
+\indent \textbf{Jurisdiction and Mandatory Adjudication.}
+ORS~\S90.370(1)(a) provides that in an action for
+possession based upon nonpayment of rent, the tenant
+\textit{may} counterclaim for any amount recoverable under
+the rental agreement or ORS Chapter~90, provided the
+landlord had or reasonably should have had knowledge of the
+facts constituting the counterclaim prior to filing.
+ORS~\S90.370(1)(a) expressly confers jurisdiction on this
+Court to hear and determine Defendant's counterclaims in
+this FED proceeding, notwithstanding the limited
+jurisdiction of the court. Upon the tenant's assertion of
+a counterclaim, ORS~\S90.370(1)(b) requires the court to
+\textit{determine the amount due to each party} and enter
+judgment accordingly. This determination is mandatory, not
+discretionary. ORCP 22~A; ORS~\S105.130(4). Each
+counterclaim below arises from the same tenancy and is
+grounded in Plaintiff's own ledger, text messages, and
+written communications, each of which was in Plaintiff's
+possession before this action was filed.
+\textit{See} Exhibits A--N. Plaintiff had actual and
+constructive knowledge of every fact asserted herein.\\
+\indent \textbf{Correct Party.} For purposes of these
+counterclaims, Plaintiff'' refers to \textbf{JWP WONG
+	REAL ESTATE}, the landlord of record and real party in
+interest. To the extent the Court finds Jim Wong
+individually to be the proper plaintiff, these
+counterclaims are asserted against him in the alternative.
+Defendant requests that the Court enter judgment on these
+counterclaims against the correct party --- JWP WONG REAL
+ESTATE --- and grant Defendant equitable, injunctive, and
+legal relief accordingly. The real-party defect cannot be
+invoked by Plaintiff to defeat compulsory counterclaims.
+ORCP 22~A.\\
+\indent \textbf{Statute of Limitations.} Claims arising
+under ORS Chapter~90 or the rental agreement are subject
+to the one-year limitations period of ORS~\S12.125. All
+Chapter~90 claims within one year of this filing are timely
+on their face. Claims beyond one year are timely under the
+continuing tort doctrine, each violation having accrued
+anew with each occurrence. The vehicle tow and personal
+property conversion claims are governed by ORS~\S12.080
+(six-year limitations period for conversion of personal
+property), expiring March~6, 2030. All claims are timely
+under at least one applicable limitations period.\\
+\indent \textbf{Preservation in Event of Leave to Amend.}
+In the event the Court finds any counterclaim
+insufficiently pleaded, Defendant respectfully requests
+leave to amend pursuant to ORCP 23~A to cure any
+deficiency. Leave to amend should be freely granted when
+justice requires. ORCP 23~A.
+\CenteredUnderlined{COUNTERCLAIM DAMAGES SUMMARY}
+\begin{longtable}{p{3.3in} p{1.6in} p{.7in}}
+	\toprule
+	\textbf{Claim} & \textbf{Statutory Basis}
+	& \textbf{Amount} \\
+	\midrule
+	\endhead
+	\textbf{Habitability rent abatement.}
+	11 documented defects; all noticed in writing;
+	Plaintiff failed to remedy after notice; 10\%
+	$\times$ \$2,535/mo $\times$ 32~months
+	(conservative; court may find higher percentage
+	warranted given 28-month drain fly infestation
+	and live electrical hazard).
+	& ORS \S\S90.320, 90.360(2), 90.370
+	& \$8,112.00 \\[12pt]
+	\textbf{Renting dwelling known to be unlawful to
+		occupy.} Plaintiff knew or reasonably should have
+	known the unit was unlawful to occupy: water
+	intrusion into live electrical outlet (21 months
+	unresolved); 28-month drain fly infestation from
+	plumbing defect; standing water and mold from
+	leaking master toilet. Remedy is greater of two
+	months' periodic rent (\$5,070.00) or twice actual
+	habitability damages; floor stated; actual damages
+	to be proven at trial.
+	& ORS \S90.380
+	& \$5,070.00+ \\[12pt]
+	\textbf{Unlawful HOA entries into exclusive-use
+		patio, backyard, and garage; breach of quiet
+		enjoyment.} One month's periodic rent per
+	occurrence under ORS~\S90.322(8); 8
+	ledger-documented occurrences (Jul.~2024--Apr.~2025);
+	Plaintiff confirmed monthly compliance officer
+	visits (Exhibit~C, Jul.~30,~2025); pre-ledger
+	entry Sep.~25,~2023 establishes additional
+	occurrence; each entry independently breaches
+	ORS~\S90.360(1); \$2,535 $\times$ 8 $=$
+	\$20,280.00 minimum.
+	& ORS \S\S90.322(8), 90.360(1), 90.325
+	& \$20,280.00 \\[12pt]
+	\textbf{Unlawful HOA fee pass-throughs.}
+	ORS~\S90.302(1) prohibits the charge;
+	ORS~\S90.302(3) provides the remedy: two months'
+	periodic rent (\$5,070.00) plus actual damages
+	(\$2,220.00 per Exhibit~B) per claim; the demand
+	itself is the violation; any lease clause
+	authorizing pass-throughs is void under
+	ORS~\S90.135.
+	& ORS \S\S90.302(1), (3); 90.135
+	& \$7,290.00 \\[12pt]
+	\textbf{Vehicle tow and conversion --- Dodge
+		Journey.} \$14,039.88 outstanding payoff balance
+	reported to Defendant's credit (Exhibit~P); towed
+	March~6, 2024; no parking pass issued for 8+
+	months despite written requests; no valid tow
+	authorization (ORS~\S98.854(2)); no pre-tow
+	warning; Plaintiff abdicated duty in writing:
+	there is nothing I could do''
+	(Exhibit~C, Mar.~17,~2024); 6-year SOL under
+	ORS~\S12.080 (expires Mar.~6,~2030).
+	& ORS \S\S90.325, 90.365; ORS \S12.080
+	& \$14,039.88 \\[12pt]
+	\textbf{Personal property lost in towed vehicle.}
+	iPad, prescription eyeglasses, prescription
+	medications, legal and financial paperwork,
+	clothing, child's car seat, jewelry, work
+	equipment; 6-year SOL under ORS~\S12.080
+	(expires Mar.~6,~2030); to be proven at trial.
+	& ORS \S\S90.325, 90.365; ORS \S12.080
+	& \$3,000.00 \\[12pt]
+	\textbf{Retaliation --- 4 independent bases.}
+	(1)~Selective HCV disclosure concealing 11 HQS
+	violations while forwarding HOA noncompliance
+	notice caused by Plaintiff's own failure to
+	install window screens;
+	(2)~Selective grill enforcement contrary to
+	express lease term while similarly situated
+	residents are not comparably enforced against
+	(Exhibit~N);
+	(3)~Bad-faith lease coercion Jan.~25,~2025
+	(Exhibit~C);
+	(4)~Maintenance of void prior FED judgment
+	trapping Defendant in substandard unit;
+	statutory remedy up to 3~months' periodic rent
+	(\$7,605.00) plus actual damages; to be proven
+	at trial.
+	& ORS \S90.385(2)
+	& TBD \\[12pt]
+	\textbf{Emotional distress and consequential
+		damages.} Loss of vehicle containing child's car
+	seat and prescription medications; credit
+	destruction (\$14,039.88 reported to credit,
+	Exhibit~P); loss of transportation; impaired
+	employment mobility; inability to coordinate
+	rental assistance; 32-month habitability pattern;
+	HCV voucher threatened by bad-faith disclosure;
+	to be proven at trial.
+	& ORS \S\S90.365, 90.385; ORS \S90.125
+	& TBD \\[12pt]
+	\midrule
+	\textbf{Minimum Quantified Total
+		(before TBD claims)}
+	& & \textbf{\$57,791.88} \\[6pt]
+	\textit{Plus pre-ledger entry Sep.~25,~2023
+		(+\$2,535.00) raises floor to \$60,326.88;
+		ORS~\S90.380 actual damages may further increase
+		quantified total.}
+	& & \textit{(\$60,326.88+)} \\[6pt]
+	Plaintiff's corrected rent balance (HOA fines
+	and late fees removed; HRSN correctly applied;
+	\$0 tenant portion Nov.~2025--Jan.~2026 credited)
+	& ORS \S\S90.394, 90.220(9)
+	& \$1,345.00 \\[6pt]
+	\midrule
+	\textbf{Net amount owed to Defendant
+		(minimum quantified, before TBD claims)}
+	& & \textbf{(\$56,446.88+)} \\
+	\bottomrule
+\end{longtable}
+\indent Defendant's minimum quantified counterclaim damages
+of \$57,791.88 exceed the corrected rent balance, resulting
+in a net judgment in Defendant's favor of not less than
+\$56,446.88. Defendant has satisfied her duty to mitigate
+through documented habitability complaints, repeated
+attempts to secure alternative housing (frustrated by
+Plaintiff's unlawful prior FED judgment), and active
+coordination of rental assistance payments.\\
+\indent \textbf{A Note on the Magnitude of These
+	Counterclaims.} The amounts reflected herein are not
+a litigation strategy---they are the product of 32 months
+of documented, unresolved habitability failures, repeated
+statutory violations, and a manufactured rent arrearage
+built from charges the Legislature has expressly prohibited,
+including [specify: e.g., unlawful late fees, prohibited
+utility charges]. Each dollar figure derives from one of
+two sources: either Plaintiff's own ledger, or the remedy
+the Oregon Legislature has assigned by statute to the
+specific violation Defendant endured. Where the Legislature
+has determined that an unlawful entry into a tenant's
+exclusive-use space costs one month's periodic rent per
+occurrence, or that an unlawful fee demand costs two months'
+periodic rent, those are not Defendant's numbers---they are
+the Legislature's. Defendant has lived in this home
+throughout. These counterclaims are a record of that time.
+\indent \textbf{Preservation in Event of Jurisdictional
+	Dismissal.} In the event the Court grants Defendant's
+Motion to Dismiss, Defendant requests that the Court
+either: (a)~retain jurisdiction over these counterclaims
+as independent claims pursuant to ORS~\S90.370(1)(a) and
+ORCP 22~B, severing them from Plaintiff's dismissed
+complaint; or (b)~expressly state in its order of
+dismissal that Defendant's counterclaims are dismissed
+without prejudice and preserved for assertion in any
+subsequent proceeding, including any refiled FED action or
+independent civil action, so that no preclusion argument
+may be raised against them. Defendant does not abandon
+these claims by seeking dismissal of Plaintiff's complaint.
+% ============================================================
+\section{\textbf{REQUEST FOR RELIEF}}
+% ============================================================
+WHEREFORE, Defendant Ashle' Penn respectfully requests that
+this Court:
+\begin{enumerate}[label=\arabic*.,leftmargin=.5in,nosep]
+	\item In the alternative, and without waiving any
+	jurisdictional defense, grant Defendant a trial on her
+	counterclaims pursuant to ORS~\S90.370(1)(a),
+	ORCP 22~A, and ORS~\S105.130(3), solely to preserve
+	her right to adjudication of those claims in the event
+	this Court retains jurisdiction;
+	\item Dismiss Plaintiff's Complaint \textbf{with
+		prejudice} under ORS~\S90.394(3) and
+	\textit{Hickey v.\ Scott}, 370 Or 97 (2022), the
+	notice having overstated the amount owed by
+	\$4,573.00;
+	\item In the alternative, dismiss under
+	ORCP 21~A(1)(g) for failure to state a claim on the
+	grounds that: (a)~Jim Wong individually is not the
+	real party in interest and cannot state a claim for
+	possession; and (b)~the void notice is the
+	jurisdictional predicate for the entire action;
+	\item In the alternative, dismiss under
+	ORS~\S90.395 for failure to cooperate with rental
+	assistance programs;
+	\item In the alternative, dismiss without prejudice
+	under ORCP 26~A for failure to prosecute in the name
+	of the real party in interest, with leave to refile
+	in the name of JWP WONG REAL ESTATE upon submission
+	of proof of agency authority;
+	\item In the alternative, dismiss for defective
+	service under ORCP~7 and ORS~\S105.135;
+	\item In the alternative, dismiss or enter default
+	due to Plaintiff's non-appearance at the March~2,
+	2026 hearing as required by ORS~\S105.137(3);
+	\item In the alternative, vacate the June~5, 2026
+	trial date and resolve the pending Motion to Dismiss
+	before any trial date is set, pursuant to
+	ORCP 21~G(4);
+	\item Deny Plaintiff's request for possession;
+	\item Enter judgment in favor of Defendant on her
+	counterclaims against \textbf{JWP WONG REAL ESTATE}
+	(or Jim Wong in the alternative) for equitable,
+	injunctive, and legal relief, in an amount not less
+	than \$57,791.88, resulting in a net judgment in
+	Defendant's favor of not less than \$56,446.88, with
+	TBD claims reserved for trial;
+	\item Grant injunctive relief prohibiting Plaintiff,
+	JWP WONG REAL ESTATE, AMS, and the HOA from further
+	unauthorized entry into Defendant's exclusive-use
+	patio, backyard, and garage without the 24-hour
+	notice required by ORS~\S90.322(1)(f);
+	\item Grant injunctive relief prohibiting Plaintiff
+	from enforcing any HOA demand that Defendant remove
+	her outdoor grill, in contravention of the express
+	terms of the rental agreement and Defendant's quiet
+	enjoyment rights under ORS~\S90.360(1);
+	\item Stay any writ of possession pending resolution
+	of Defendant's Motion to Dismiss and, if denied,
+	pending any appeal, to prevent irreparable harm to
+	Defendant and her minor child;
+	\item Issue written findings of fact and conclusions
+	of law on each jurisdictional and merits issue raised
+	herein, including: (a)~whether the notice accurately
+	states the amount of rent owed; (b)~whether Jim Wong
+	individually is the real party in interest;
+	(c)~whether service was legally sufficient;
+	(d)~whether Plaintiff appeared at the March~2, 2026
+	hearing within the meaning of ORS~\S105.137(3);
+	(e)~the amount due to each party on Defendant's
+	counterclaims under ORS~\S90.370(1)(b); and
+	(f)~the disposition of each counterclaim, for
+	purposes of appellate preservation;
+	\item Expressly preserve Defendant's counterclaims
+	without prejudice in the event of jurisdictional
+	dismissal, pursuant to ORCP 22~B and
+	ORS~\S90.370(1)(a);
+	\item Grant leave to amend any counterclaim found
+	insufficiently pleaded, pursuant to ORCP 23~A;
+	\item Award Defendant attorney fees and costs under
+	ORS~\S90.255; and
+	\item Grant such other equitable, injunctive, and
+	legal relief as the Court deems just.
+\end{enumerate}
+\indent I declare under penalty of perjury under the laws
+of the State of Oregon that the foregoing is true and
+correct to the best of my knowledge and belief.
+\vspace{1em}
+\noindent Respectfully submitted,\\[4pt]
+Date: \underline{March 15, 2026}\\[6pt]
+\noindent/s/\includegraphics[scale=0.23]{signature2.png}\\[4pt]
+\noindent\rule{3in}{0.5pt}\\
+Ashle' Penn, Defendant, \textit{In Propria Persona}\\
+17548 NW Springville Rd \#9, Portland, OR 97229\\[4pt]
+\textit{Defendant appears pro se and specially,
+	without waiving any jurisdictional defenses.}
+% ============================================================
+% EXHIBIT LIST
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{EXHIBIT LIST}} --- Pg.~\thepage}
+\begin{center}
+	{\normalsize\textbf{EXHIBIT LIST}}\\[4pt]
+	{\normalsize\textit{Jim Wong v.\ Ashle' Penn},
+		Case No.\ 26LT03815}\\[4pt]
+	{\normalsize Washington County Circuit Court}
+\end{center}
+\vspace{0.5em}
+\begin{longtable}{p{0.9in} p{4.7in}}
+	\toprule
+	\textbf{Exhibit} & \textbf{Description} \\
+	\midrule
+	\endhead
+	Exhibit A & Defendant's Counterclaim Damages Summary
+	(Section~VIII of this Amended Answer). \\[6pt]
+	Exhibit B & Plaintiff's Rent Ledger, 17548 NW
+	Springville Rd Unit~9, Tenant Ashle' Penn,
+	July~2024--January~2026, transmitted by email from
+	jimwong@me.com on January~21, 2026 at 11:56~p.m.;
+	confirming HOA fines of \$2,220.00, late fees of
+	\$1,045.00, and HRSN credit of \$4,494.00 applied
+	to November~2025 only; basis for Plaintiff's claimed
+	balance of \$5,918.00. \\[6pt]
+	Exhibit C & Text Message and Email Record, Jim Wong
+	and Ashle' Penn, July~2023--March~2026, including:
+	habitability complaints and responses; HOA
+	noncompliance notices forwarded by Plaintiff;
+	Plaintiff's July~30, 2025 admission of monthly
+	compliance officer visits; Defendant's January~13,
+	2025 explanation of window tape as self-help remedy
+	for missing screens; Plaintiff's March~11--18, 2024
+	tow communications and admissions including there
+	is nothing I could do''; failure to provide parking
+	pass; failure to provide replacement mail key;
+	January~25, 2025 lease coercion; Plaintiff's
+	January~21, 2026 email admitting HOA fine suspension
+	was discretionary; Plaintiff's March~2, 2026 text
+	message at 10:19~a.m.\ confirming ex parte contact
+	with the court regarding Defendant's pending motion
+	before Defendant was contacted. \\[6pt]
+	Exhibit D & Lease Agreement, 17548 NW Springville
+	Rd Unit~9, JWP WONG REAL ESTATE and Ashle' Penn,
+	including provision expressly permitting outdoor
+	grill. \\[6pt]
+	Exhibit E & CC\&Rs for Courtyards at Springville,
+	all phases: exclusive-use limited common element
+	designations (patios, backyards, garages);
+	Sections~5.1 and~6.1. \\[6pt]
+	Exhibit F & Bylaws, Courtyards at Springville:
+	Sections~5.3(a), 5.6, 5.7 confirming HOA
+	assessments and enforcement remedies run against
+	unit owners only. \\[6pt]
+	Exhibit G & WCHA HAP Payment History, Ashle' Penn,
+	17548 NW Springville Rd Unit~9, confirming payments
+	to JWP WONG REAL ESTATE; \$0.00 tenant portion for
+	November~2025--January~2026 following income
+	recertification. \\[6pt]
+	Exhibit H & Income Recertification Signature
+	Document, Ashle' Penn, confirming \$0.00 tenant
+	portion effective November~2025. \\[6pt]
+	Exhibit I & HOA Compliance Letter, Case No.\
+	2024-CSVC-00058, August~13, 2024. \\[6pt]
+	Exhibit J & HOA Compliance Letter, Case No.\
+	2024-CSVC-00058, September~17, 2024. \\[6pt]
+	Exhibit K & HOA Compliance Letter, Case No.\
+	2024-CSVC-00059, September~24, 2024. \\[6pt]
+	Exhibit L & HOA Compliance Letter, Case No.\
+	2024-CSVC-00059, January~13, 2025. \\[6pt]
+	Exhibit M & Text message screenshot, March~2, 2026
+	at 10:19~a.m., Jim Wong to Ashle' Penn, confirming
+	Plaintiff's ex parte contact with the court
+	regarding Defendant's pending motion before
+	Defendant was contacted. \\[6pt]
+	Exhibit N & Photograph of parking area at 17548 NW
+	Springville Rd showing absence of fire lane markings
+	at location of tow; and photograph showing outdoor
+	grills maintained by other residents without
+	comparable enforcement action. \\[6pt]
+	Exhibit O & Jim Wong email(s), March~17--18, 2024,
+	admitting: no pre-tow warning was given; Defendant's
+	photographs showed vehicle was not in the fire lane;
+	and there is nothing I could do'' --- establishing
+	Plaintiff's abdication of his non-delegable duty
+	under ORS~\S90.325. \\[6pt]
+	Exhibit P & Defendant's credit report and/or bank
+	statement reflecting \$14,039.88 outstanding payoff
+	balance on Dodge Journey reported to credit
+	following tow. \\
+	\bottomrule
+\end{longtable}
+% ============================================================
+% EXHIBIT A — COUNTERCLAIM DAMAGES SUMMARY (cover sheet)
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT A}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit A}
+\end{flushleft}
+\begin{center}
+	\textbf{COUNTERCLAIM DAMAGES SUMMARY}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815\\[4pt]
+	Washington County Circuit Court
+\end{center}
+\vspace{0.5em}
+\noindent \textit{See} Section~VIII of Defendant's Amended
+Answer, incorporated herein by reference. The counterclaim
+damages summary set forth in Section~VIII constitutes
+Defendant's Exhibit~A.
+% ============================================================
+% EXHIBIT B — LEDGER
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT B}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit B}
+\end{flushleft}
+\begin{center}
+	\textbf{PLAINTIFF'S RENT LEDGER --- UNIT 9}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815\\[4pt]
+	Transmitted January~21, 2026 at 11:56~p.m.\
+	by jimwong@me.com
+\end{center}
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{EXHIBIT.Ashle F9 Ledger - Dec 2026.pdf}
+% ============================================================
+% EXHIBIT C — TEXT / EMAIL RECORD
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT C}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit C}
+\end{flushleft}
+\begin{center}
+	\textbf{TEXT MESSAGE AND EMAIL RECORD ---
+		SELECTED RELEVANT COMMUNICATIONS}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\noindent \textbf{Index of Communications:}
+\begin{longtable}{p{1.2in} p{4.4in}}
+	\toprule
+	\textbf{Date} & \textbf{Subject} \\
+	\midrule
+	\endhead
+	Jul.~2023 & Defendant's vehicle registration and
+	parking pass request \\[3pt]
+	Nov.~16, 2023 & Drain fly infestation --- written
+	notice to Plaintiff \\[3pt]
+	Jun.~26, 2024 & Leaking kitchen sink; water
+	intrusion into live electrical outlet ---
+	written notice \\[3pt]
+	Mar.~11--18, 2024 & Tow communications: parking
+	pass failure; shifting justifications; Plaintiff's
+	admission there is nothing I could do'' \\[3pt]
+	Jan.~13, 2025 & Window tape as self-help remedy
+	for missing screens \\[3pt]
+	Jan.~25, 2025 & Bad-faith lease coercion \\[3pt]
+	Jul.~30, 2025 & Plaintiff's admission: They will
+	send compliance officer to check on whether they
+	have been addressed and accumulate the fines each
+	month'' \\[3pt]
+	Nov.~17, 2025 & Leaking master toilet; standing
+	water; mold --- written notice \\[3pt]
+	Nov.~2025--Jan.~2026 & Non-functioning stove
+	burner; inadequate hot water; power outages;
+	non-functioning outlets; mail key requests \\[3pt]
+	Jan.~21, 2026 & Plaintiff's email transmitting
+	ledger; admission HOA fine suspension was
+	discretionary: the HOA kindly agreed to
+	temporarily suspend'' \\[3pt]
+	Mar.~2, 2026 (10:19~a.m.) & Plaintiff's text
+	confirming ex parte court contact: I spoke with
+	the court regarding your motion to file
+	documents'' \\
+	\bottomrule
+\end{longtable}
+\vspace{0.5em}
+\includegraphics[width=\textwidth,keepaspectratio]{sent.png}
+% ============================================================
+% EXHIBIT D — LEASE
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT D}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit D}
+\end{flushleft}
+\begin{center}
+	\textbf{LEASE AGREEMENT ---
+		17548 NW SPRINGVILLE RD UNIT 9}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{17548 LEASE.EXHIBIT - Copy.pdf}
+% ============================================================
+% EXHIBIT E — CC&Rs
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT E}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit E}
+\end{flushleft}
+\begin{center}
+	\textbf{CC\&Rs --- COURTYARDS AT SPRINGVILLE,
+		ALL PHASES}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{EXHIBIT. CCRS All Phases.pdf}
+% ============================================================
+% EXHIBIT F — BYLAWS
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT F}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit F}
+\end{flushleft}
+\begin{center}
+	\textbf{BYLAWS --- COURTYARDS AT SPRINGVILLE}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{EXHIBIT. Bylaws (1) - Copy.pdf}
+% ============================================================
+% EXHIBIT G — HAP PAYMENT HISTORY
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT G}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit G}
+\end{flushleft}
+\begin{center}
+	\textbf{WCHA HAP PAYMENT HISTORY}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{EXHIBIT. TenantHAP_2-28-2026_4-42.pdf}
+% ============================================================
+% EXHIBIT H — RECERTIFICATION
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT H}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit H}
+\end{flushleft}
+\begin{center}
+	\textbf{INCOME RECERTIFICATION SIGNATURE
+		DOCUMENT}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{EXHIBIT. Recert__Ashle'_Penn_44181362_Member_2309917 Signature Document.pdf}
+% ============================================================
+% EXHIBIT I — COMPLIANCE LETTER 2024-CSVC-00058, 8.13.24
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT I}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit I}
+\end{flushleft}
+\begin{center}
+	\textbf{HOA COMPLIANCE LETTER ---
+		CASE NO.\ 2024-CSVC-00058}\\[2pt]
+	\textbf{August~13, 2024}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{EXHIBIT.F9 Compliance Letter 8.13.24.pdf}
+% ============================================================
+% EXHIBIT J — COMPLIANCE LETTER 2024-CSVC-00058, 9.17.24
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT J}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit J}
+\end{flushleft}
+\begin{center}
+	\textbf{HOA COMPLIANCE LETTER ---
+		CASE NO.\ 2024-CSVC-00058}\\[2pt]
+	\textbf{September~17, 2024}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{EXHIBIT_ComplianceLetter_00058_9-17-24.pdf}
+% ============================================================
+% EXHIBIT K — COMPLIANCE LETTER 2024-CSVC-00059, 9.24.24
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT K}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit K}
+\end{flushleft}
+\begin{center}
+	\textbf{HOA COMPLIANCE LETTER ---
+		CASE NO.\ 2024-CSVC-00059}\\[2pt]
+	\textbf{September~24, 2024}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{EXHIBIT.Compliance Letter 9.24.24.pdf}
+% ============================================================
+% EXHIBIT L — COMPLIANCE LETTER 2024-CSVC-00059, 1.13.25
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT L}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit L}
+\end{flushleft}
+\begin{center}
+	\textbf{HOA COMPLIANCE LETTER ---
+		CASE NO.\ 2024-CSVC-00059}\\[2pt]
+	\textbf{January~13, 2025}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{EXHIBIT_ComplianceLetter_00059_1-13-25.pdf}
+% ============================================================
+% EXHIBIT M — EX PARTE TEXT
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT M}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit M}
+\end{flushleft}
+\begin{center}
+	\textbf{TEXT MESSAGE --- PLAINTIFF'S EX PARTE
+		COURT CONTACT}\\[2pt]
+	\textbf{March~2, 2026 at 10:19~a.m.}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\includegraphics[width=\textwidth,keepaspectratio]{sent.png}
+% ============================================================
+% EXHIBIT N — PARKING / GRILL PHOTOGRAPHS
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT N}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit N}
+\end{flushleft}
+\begin{center}
+	\textbf{PHOTOGRAPHS --- PARKING AREA AND
+		COMPARATIVE GRILL ENFORCEMENT}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\noindent \textbf{Figure 1:} Parking area at 17548 NW
+Springville Rd showing absence of fire lane markings
+at location of tow, March~6, 2024.
+\vspace{0.5em}
+\includegraphics[width=\textwidth,keepaspectratio]{EXHIBIT. redzone1.jpg}
+% ============================================================
+% EXHIBIT O — ABDICATION EMAIL
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT O}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit O}
+\end{flushleft}
+\begin{center}
+	\textbf{JIM WONG EMAIL --- ABDICATION OF
+		LANDLORD DUTY}\\[2pt]
+	\textbf{March~17--18, 2024}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\noindent This exhibit contains Plaintiff's written
+communications of March~17--18, 2024, in which Plaintiff
+acknowledged that: (1)~a warning was required before
+towing; (2)~Defendant's photographs showed her vehicle
+was not in the fire lane; and (3)~there is nothing I
+could do'' --- establishing Plaintiff's abdication of his
+non-delegable duty under ORS~\S90.325.
+\vspace{0.5em}
+\includepdf[pages=-,pagecommand={}]{EXHIBIT.font of car in front of garage.jpg}
+% ============================================================
+% EXHIBIT P — CREDIT / VEHICLE PAYOFF
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{DEFENDANT'S EXHIBIT P}} ---
+	Pg.~\thepage}
+\begin{flushleft}
+	\textbf{\large Defendant's Exhibit P}
+\end{flushleft}
+\begin{center}
+	\textbf{CREDIT REPORT / VEHICLE PAYOFF BALANCE}\\[4pt]
+	\textit{Jim Wong v.\ Ashle' Penn},
+	Case No.\ 26LT03815
+\end{center}
+\vspace{0.5em}
+\noindent This exhibit contains Defendant's credit report
+and/or bank statement reflecting the \$14,039.88
+outstanding payoff balance on the Dodge Journey reported
+to Defendant's credit following the March~6, 2024 tow.
+\vspace{1em}
+\noindent \textit{[Attach credit report / bank statement
+	here before filing.]}
+% ============================================================
+% DOCUMENT 2 OF 4 — NOTICE OF MOTION
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+	\textbf{\textsc{NOTICE OF MOTION}} ---
+	Pg.~\thepage}
+\begin{center}
+	{\normalsize\textbf{IN THE CIRCUIT COURT OF THE
+			STATE OF OREGON}}\\[2pt]
+	{\normalsize\textbf{FOR THE COUNTY OF
+			WASHINGTON}}\\[2pt]
+\end{center}
+\CaptionBlock{\textbf{26LT03815}}{%
+	\begin{center}
+		\fontsize{9}{9}\selectfont
+		\textbf{NOTICE OF DEFENDANT'S RENEWED\\
+			MOTION TO DISMISS FOR LACK OF\\
+			SUBJECT MATTER JURISDICTION\\
+			AND LACK OF STANDING}%
+	\end{center}
+}{%
+	JIM WONG,\\[4pt]
+	\hspace{0.3in}Plaintiff,\\[8pt]
+	vs.\\[8pt]
+	ASHLE' PENN,\\[8pt]
+	\hspace{0.3in}Defendant,
+	\textit{In Propria Persona}.%
+}
+\vspace{1em}
+PLEASE TAKE NOTICE that Defendant Ashle' Penn, appearing
+specially and without waiving any jurisdictional defense,
+hereby renews her Motion to Dismiss for Lack of Subject
+Matter Jurisdiction and Lack of Standing, as set forth in
+her Amended Answer filed herewith.
+\indent This motion is based upon the following grounds,
+each of which is independently sufficient to require
+dismissal:
+\begin{enumerate}[label=\arabic*.,leftmargin=.5in,
+	itemsep=2pt]
+	\item \textbf{Defective Notice of Termination} ---
+	Plaintiff's notice overstates the amount of rent owed
+	by \$4,573.00 (noticed: \$5,918.00; corrected:
+	\$1,345.00), rendering the notice void and depriving
+	this Court of subject matter jurisdiction under
+	ORS~\S90.394(3) and \textit{Hickey v.\ Scott},
+	370 Or 97 (2022);
+	\item \textbf{Wrong Plaintiff; Failure to State a
+		Claim} --- Jim Wong individually is not the real
+	party in interest; the landlord of record is JWP WONG
+	REAL ESTATE, LLC; a plaintiff without a cognizable
+	legal right to possession cannot state a claim under
+	ORCP 21~A(1)(g) and ORS~\S105.130(4)
+%% PICKS UP from: ORS~\S105.130(4
+\item \textbf{Indispensable Party Not Joined} ---
+JWP WONG REAL ESTATE is an indispensable party whose
+absence deprives this Court of the ability to grant
+complete relief; ORCP 26~A; ORCP 21~A(1)(g);
+\item \textbf{Defective Service} --- Service did not
+comply with ORCP~7 and ORS~\S105.135, depriving this
+Court of personal jurisdiction over Defendant;
+ORCP 21~A(1)(e); ORCP 21~G(1);
+\item \textbf{Failure to Cooperate with Rental
+	Assistance} --- Plaintiff accepted HAP and HRSN
+payments and misapplied them to unlawful charges in
+violation of ORS~\S90.220(9); ORS~\S90.395
+independently requires dismissal;
+\item \textbf{Plaintiff's Non-Appearance} ---
+Plaintiff failed to appear when this case was called
+on March~2, 2026; ORS~\S105.137(3) mandates
+dismissal or entry of judgment for Defendant upon
+Plaintiff's failure to appear; and
+\item \textbf{Trial Date Set Over Pending
+	Jurisdictional Motion} --- No trial date may be set
+while a jurisdictional motion remains pending and
+unresolved; ORCP 21~G(4); ORS~\S105.130(4).
+\end{enumerate}
+\indent This motion is supported by Defendant's Amended
+Answer, Affirmative Defenses, and Counterclaims filed
+herewith, including all exhibits thereto, each of which
+is incorporated herein by reference.
+\indent Defendant respectfully requests that this Court
+resolve this motion before any trial date proceeds and
+before requiring further substantive filings from
+Defendant. ORCP 21~G(4).
+\vspace{1em}
+\noindent Respectfully submitted,\\[4pt]
+Date: \underline{March 15, 2026}\\[6pt]
+\noindent/s/\includegraphics[scale=0.23]{signature2.png}\\[4pt]
+\noindent\rule{3in}{0.5pt}\\
+Ashle' Penn, Defendant, \textit{In Propria Persona}\\
+17548 NW Springville Rd \#9, Portland, OR 97229\\[4pt]
+\textit{Defendant appears pro se and specially,
+without waiving any jurisdictional defenses.}
+% ============================================================
+% DOCUMENT 3 OF 4 — PROPOSED ORDER
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+\textbf{\textsc{PROPOSED ORDER}} ---
+Pg.~\thepage}
+\begin{center}
+{\normalsize\textbf{IN THE CIRCUIT COURT OF THE
+		STATE OF OREGON}}\\[2pt]
+{\normalsize\textbf{FOR THE COUNTY OF
+		WASHINGTON}}\\[2pt]
+		\end{center}
+		\CaptionBlock{\textbf{26LT03815}}{%
+\begin{center}
+	\fontsize{9}{9}\selectfont
+	\textbf{PROPOSED ORDER ON DEFENDANT'S\\
+		RENEWED MOTION TO DISMISS}%
+\end{center}
+}{%
+JIM WONG,\\[4pt]
+\hspace{0.3in}Plaintiff,\\[8pt]
+vs.\\[8pt]
+ASHLE' PENN,\\[8pt]
+\hspace{0.3in}Defendant,
+\textit{In Propria Persona}.%
+}
+\vspace{1em}
+THIS MATTER having come before the Court on Defendant's
+Renewed Motion to Dismiss for Lack of Subject Matter
+Jurisdiction and Lack of Standing, and the Court having
+considered the motion, the Amended Answer, and all
+exhibits thereto, and being duly advised in the premises:
+\vspace{0.5em}
+\noindent \textbf{IT IS HEREBY ORDERED} as follows:
+\vspace{0.5em}
+\noindent \textbf{[OPTION A --- GRANT MOTION TO DISMISS]}
+\vspace{0.3em}
+\noindent $\square$ Defendant's Renewed Motion to Dismiss
+is \textbf{GRANTED}.
+\vspace{0.3em}
+\noindent $\square$ Plaintiff's Complaint is dismissed
+\underline{\hspace{1in}} with prejudice
+\underline{\hspace{1in}} without prejudice, on the
+following ground(s):
+\vspace{0.3em}
+\begin{enumerate}[label=$\square$,leftmargin=.5in,
+itemsep=2pt]
+\item Defective notice of termination; notice void
+under ORS~\S90.394(3) and \textit{Hickey v.\ Scott},
+370 Or 97 (2022); this Court lacks subject matter
+jurisdiction.
+\item Wrong plaintiff; Jim Wong individually is not
+the real party in interest; failure to state a claim
+under ORCP 21~A(1)(g).
+\item Indispensable party JWP WONG REAL ESTATE not
+joined; ORCP 26~A.
+\item Defective service; ORCP 21~A(1)(e).
+\item Failure to cooperate with rental assistance;
+ORS~\S90.395.
+\item Plaintiff's non-appearance; ORS~\S105.137(3).
+\end{enumerate}
+\vspace{0.3em}
+\noindent $\square$ The June~5, 2026 trial date is
+\textbf{VACATED}.
+\vspace{0.3em}
+\noindent $\square$ Defendant's counterclaims are
+dismissed \textbf{WITHOUT PREJUDICE} and are expressly
+preserved for assertion in any subsequent proceeding,
+including any refiled FED action or independent civil
+action. No preclusion shall arise from this dismissal
+as to Defendant's counterclaims. ORCP 22~B;
+ORS~\S90.370(1)(a).
+\vspace{0.3em}
+\noindent $\square$ In the alternative, this Court
+retains jurisdiction over Defendant's counterclaims as
+independent claims pursuant to ORS~\S90.370(1)(a) and
+ORCP 22~B, severed from Plaintiff's dismissed complaint.
+\vspace{0.5em}
+\noindent \textbf{[OPTION B --- DENY MOTION TO DISMISS]}
+\vspace{0.3em}
+\noindent $\square$ Defendant's Renewed Motion to Dismiss
+is \textbf{DENIED}.
+\vspace{0.3em}
+\noindent $\square$ This matter is set for trial on
+\underline{\hspace{1.5in}}, 2026 at
+\underline{\hspace{0.75in}} a.m./p.m., before Judge
+\underline{\hspace{1.5in}}.
+\vspace{0.3em}
+\noindent $\square$ All jurisdictional objections raised
+by Defendant are \textbf{PRESERVED} for appellate review.
+\vspace{0.3em}
+\noindent $\square$ The Court shall determine the amount
+due to each party on Defendant's counterclaims at trial
+pursuant to ORS~\S90.370(1)(b). This determination is
+mandatory.
+\vspace{0.5em}
+\noindent \textbf{[ALL ORDERS]}
+\vspace{0.3em}
+\noindent $\square$ Any writ of possession is
+\textbf{STAYED} pending resolution of this motion and,
+if denied, pending any appeal.
+\vspace{0.3em}
+\noindent $\square$ The Court issues written findings of
+fact and conclusions of law on the following:
+\begin{enumerate}[label=(\alph*),leftmargin=.5in,
+itemsep=2pt]
+\item Whether the notice accurately states the
+amount of rent owed;
+\item Whether Jim Wong individually is the real
+party in interest;
+\item Whether service was legally sufficient;
+\item Whether Plaintiff appeared at the March~2,
+2026 hearing within the meaning of
+ORS~\S105.137(3);
+\item The amount due to each party on Defendant's
+counterclaims under ORS~\S90.370(1)(b); and
+\item The disposition of each counterclaim.
+\end{enumerate}
+\vspace{0.3em}
+\noindent $\square$ Defendant is awarded attorney fees
+and costs under ORS~\S90.255 in the amount of
+\$\underline{\hspace{1in}}.
+\vspace{1.5em}
+\noindent IT IS SO ORDERED.
+\vspace{1.5em}
+\noindent DATED this \underline{\hspace{0.5in}} day of
+\underline{\hspace{1.2in}}, 2026.
+\vspace{2em}
+\noindent\rule{3.5in}{0.5pt}\\
+Circuit Court Judge\\
+Washington County Circuit Court
+% ============================================================
+% DOCUMENT 4 OF 4 — CERTIFICATE OF SERVICE
+% ============================================================
+\newpage
+\fancyfoot[L]{\fontsize{8}{10}\selectfont
+\textbf{\textsc{CERTIFICATE OF SERVICE}} ---
+Pg.~\thepage}
+\begin{center}
+{\normalsize\textbf{IN THE CIRCUIT COURT OF THE
+		STATE OF OREGON}}\\[2pt]
+{\normalsize\textbf{FOR THE COUNTY OF
+		WASHINGTON}}\\[2pt]
+		\end{center}
+		\CaptionBlock{\textbf{26LT03815}}{%
+\begin{center}
+	\fontsize{9}{9}\selectfont
+	\textbf{CERTIFICATE OF SERVICE}%
+\end{center}
+}{%
+JIM WONG,\\[4pt]
+\hspace{0.3in}Plaintiff,\\[8pt]
+vs.\\[8pt]
+ASHLE' PENN,\\[8pt]
+\hspace{0.3in}Defendant,
+\textit{In Propria Persona}.%
+}
+\vspace{1em}
+I, Ashle' Penn, hereby certify that on
+\underline{\hspace{0.5in}} March 2026, I served a true
+and correct copy of the following documents:
+\begin{enumerate}[label=\arabic*.,leftmargin=.5in,
+itemsep=2pt]
+\item Defendant's Amended Answer, Affirmative
+Defenses, and Renewed Motion to Dismiss, with
+Exhibits A through P;
+\item Notice of Defendant's Renewed Motion to
+Dismiss; and
+\item Proposed Order on Defendant's Renewed Motion
+to Dismiss
+\end{enumerate}
+\noindent upon Plaintiff Jim Wong by the following
+method:
+\vspace{0.5em}
+\noindent $\square$ \textbf{First-class U.S.\ mail,}
+postage prepaid, addressed to:
+\vspace{0.5em}
+\noindent \hspace{0.5in} Jim Wong\\
+\hspace{0.5in} \underline{\hspace{3in}}\\
+\hspace{0.5in} \underline{\hspace{3in}}
+\vspace{0.5em}
+\noindent $\square$ \textbf{Electronic service} to:
+\underline{jimwong@me.com}
+\vspace{0.5em}
+\noindent $\square$ \textbf{Personal service} at:
+\underline{\hspace{3in}}
+\vspace{1em}
+\noindent I declare under penalty of perjury under the
+laws of the State of Oregon that the foregoing is true
+and correct.
+\vspace{1.5em}
+\noindent Date: \underline{\hspace{1.5in}}\\[6pt]
+\noindent/s/\includegraphics[scale=0.23]{signature2.png}\\[4pt]
+\noindent\rule{3in}{0.5pt}\\
+Ashle' Penn, Defendant, \textit{In Propria Persona}\\
+17548 NW Springville Rd \#9, Portland, OR 97229
+\end{document}
