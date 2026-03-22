@@ -31,6 +31,22 @@ Load `circuit_pleading.tex` verbatim. Fill:
 - Body: facts/record/rule/delta (non-conclusory).
 See `examples/circuit_example.tex`.
 
+\SubpoenaForm{
+  PLAINTIFF_NAME,
+  DEFENDANT_NAME, 
+  CASE_NO, 
+  WITNESS_NAME, 
+  WITNESS_ADDRESS, 
+  WITNESS_ZIP, 
+  ROOM_NO, 
+  DAY_NUMBER, 
+  MONTH_NAME, 
+  SERVICE_RECIPIENT, 
+  duces, 
+  DOCUMENT_LIST
+}
+
+
 ## Output Appellate
 Model Oregon Law Library briefs (appellate_style_guide.md). Sections: Questions Presented, Facts, Argument (rule/record/delta). No Circuit preamble.
 
